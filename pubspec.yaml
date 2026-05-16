@@ -1,0 +1,86 @@
+## pubspec.yaml — ResQ Flutter App
+## Declares all dependencies, assets, and metadata for the ResQ disaster-relief application.
+## Gemma 4 E2B runs fully on-device via LiteRT (.tflite bundled in assets/model/).
+
+name: resq
+description: "ResQ — Offline-first disaster relief assistant powered by on-device Gemma 4 E2B via LiteRT."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── AI / ML ──────────────────────────────────────────────────────────────────
+  # tflite_flutter: official Google LiteRT Dart binding — runs the bundled
+  # gemma-4-e2b.tflite fully on-device via CPU/GPU delegates. No network.
+  tflite_flutter: ^0.12.1
+
+  # google_generative_ai: kept for the Gemma tokenizer helper utilities.
+  google_generative_ai: ^0.4.6
+
+  # ── Offline Maps ──────────────────────────────────────────────────────────────
+  # flutter_map: renders OpenStreetMap tiles from a local tile cache.
+  flutter_map: ^7.0.2
+  # latlong2: typed LatLng coordinates for flutter_map.
+  latlong2: ^0.9.1
+  # flutter_map_tile_caching: downloads Map tiles for true offline rendering.
+  flutter_map_tile_caching: ^9.0.0
+
+  # ── Local Database ───────────────────────────────────────────────────────────
+  # sqflite: SQLite wrapper for persisting chats, saved locations, checklist state.
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+
+  # ── State Management ─────────────────────────────────────────────────────────
+  provider: ^6.1.2
+
+  # ── Accessibility / TTS ──────────────────────────────────────────────────────
+  # flutter_tts: offline text-to-speech (no network call).
+  flutter_tts: ^4.2.0
+
+  # ── Voice Input ───────────────────────────────────────────────────────────────
+  # speech_to_text: on-device speech recognition (works offline on most devices).
+  speech_to_text: ^7.0.0
+
+  # ── Location / GPS ───────────────────────────────────────────────────────────
+  geolocator: ^13.0.2
+
+  # ── Filesystem ───────────────────────────────────────────────────────────────
+  # path_provider: locates the app-documents directory where the .tflite model
+  # is extracted on first launch (LiteRT requires a filesystem path, not an asset).
+  path_provider: ^2.1.4
+
+  # ── Utilities ────────────────────────────────────────────────────────────────
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.3.3
+  url_launcher: ^6.3.0
+  dio: ^5.4.3+1
+  crypto: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # Pre-downloaded offline map tile cache.
+    - assets/maps/
+    # Pre-stored translations (English + Hindi) — no API call needed.
+    - assets/i18n/en.json
+    - assets/i18n/hi.json
+    # 15-topic first-aid content library.
+    - assets/first_aid/topics.json

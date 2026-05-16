@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    android/app/src/main/AndroidManifest.xml
+    ─────────────────────────────────────────────────────────────────────────────
+    Declares Android permissions required by ResQ:
+      • INTERNET: Only needed by flutter_map to download tiles during development.
+                  Remove this permission for a 100% offline production build
+                  (pre-bundle tiles and use a local tile provider).
+      • ACCESS_FINE_LOCATION: GPS coordinates for SOS display and map positioning.
+      • ACCESS_COARSE_LOCATION: Fallback when fine location is unavailable.
+      • RECORD_AUDIO: Microphone access for speech_to_text voice input.
+
+    The app does NOT require internet access for its core AI features —
+    Gemma 4 E2B runs fully on-device via LiteRT.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Location permissions for GPS SOS coordinates and offline map -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- Microphone for on-device speech-to-text input -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <!--
+        INTERNET permission: Required only for flutter_map OSM tile loading.
+        For a fully offline build, remove this and use pre-cached local tiles.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Large heap: Gemma 4 E2B requires significant RAM for on-device inference -->
+    <application
+        android:label="ResQ"
+        android:name="${applicationName}"
+        android:icon="@mipmap/launcher_icon"
+        android:largeHeap="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+    </application>
+
+    <!-- Required for geolocator on Android 10+ -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+</manifest>

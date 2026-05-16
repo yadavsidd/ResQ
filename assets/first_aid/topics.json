@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "title": "CPR & Cardiac Arrest",
+    "title_hi": "CPR और कार्डियक अरेस्ट",
+    "icon": "favorite",
+    "summary": "How to perform CPR on adults, children, and infants when someone is unresponsive and not breathing.",
+    "summary_hi": "जब कोई बेहोश हो और सांस न ले रहा हो तो वयस्कों, बच्चों और शिशुओं पर CPR कैसे करें।",
+    "steps": [
+      "Call for emergency help immediately.",
+      "Place the heel of your hand on the center of the chest.",
+      "Push down hard and fast — at least 2 inches deep, 100–120 compressions per minute.",
+      "After 30 compressions, give 2 rescue breaths.",
+      "Continue until help arrives or the person shows signs of life."
+    ],
+    "steps_hi": [
+      "तुरंत आपातकालीन मदद के लिए पुकारें।",
+      "अपने हाथ की एड़ी को छाती के बीच में रखें।",
+      "जोर से और तेजी से दबाएं — कम से कम 2 इंच गहरा, 100–120 बार प्रति मिनट।",
+      "30 बार दबाने के बाद 2 बार सांस दें।",
+      "मदद आने तक या जीवन के संकेत दिखने तक जारी रखें।"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Bleeding Control",
+    "title_hi": "रक्तस्राव नियंत्रण",
+    "icon": "water_drop",
+    "summary": "Techniques to stop severe bleeding from wounds using direct pressure and improvised tourniquets.",
+    "summary_hi": "घावों से गंभीर रक्तस्राव को रोकने की तकनीकें।",
+    "steps": [
+      "Apply firm, direct pressure to the wound with a clean cloth.",
+      "Do not remove the cloth if it becomes soaked — add more on top.",
+      "For limb wounds, elevate the limb above heart level.",
+      "For life-threatening limb bleeding, apply a tourniquet 2–3 inches above the wound.",
+      "Note the time the tourniquet was applied."
+    ],
+    "steps_hi": [
+      "घाव पर साफ कपड़े से मजबूत दबाव दें।",
+      "अगर कपड़ा भीग जाए तो न हटाएं — ऊपर और रखें।",
+      "हाथ-पैर के घाव के लिए अंग को दिल से ऊपर उठाएं।",
+      "जानलेवा रक्तस्राव के लिए घाव से 2–3 इंच ऊपर टर्निकेट लगाएं।",
+      "टर्निकेट लगाने का समय नोट करें।"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Earthquake Safety",
+    "title_hi": "भूकंप सुरक्षा",
+    "icon": "landscape",
+    "summary": "Drop, Cover, and Hold On protocol during and after an earthquake.",
+    "summary_hi": "भूकंप के दौरान और बाद में Drop, Cover, और Hold On प्रोटोकॉल।",
+    "steps": [
+      "DROP to hands and knees immediately.",
+      "Take COVER under a sturdy table or against an interior wall.",
+      "HOLD ON and protect your head and neck with your arms.",
+      "Stay inside until shaking stops.",
+      "After shaking, evacuate carefully — watch for falling debris."
+    ],
+    "steps_hi": [
+      "तुरंत हाथों और घुटनों पर झुक जाएं।",
+      "मजबूत मेज के नीचे या अंदर की दीवार के पास आश्रय लें।",
+      "थामे रहें और अपने हाथों से सिर और गर्दन की रक्षा करें।",
+      "झटके बंद होने तक अंदर रहें।",
+      "झटके बंद होने के बाद सावधानी से निकलें।"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Flood Survival",
+    "title_hi": "बाढ़ में जीवित रहना",
+    "icon": "waves",
+    "summary": "Immediate actions to take during flash floods and rising water emergencies.",
+    "summary_hi": "अचानक बाढ़ और पानी बढ़ने की आपात स्थिति में तुरंत की जाने वाली क्रियाएं।",
+    "steps": [
+      "Move immediately to higher ground — never wait for instructions.",
+      "Do not walk through moving water (6 inches can knock you down).",
+      "Do not drive through flooded roads.",
+      "If trapped in a building, move to the highest floor.",
+      "Signal rescuers with a bright cloth or flashlight from a window."
+    ],
+    "steps_hi": [
+      "तुरंत ऊँची जगह पर जाएं — निर्देशों का इंतजार न करें।",
+      "बहते पानी में न चलें (6 इंच पानी आपको गिरा सकता है)।",
+      "बाढ़ वाली सड़कों पर गाड़ी न चलाएं।",
+      "इमारत में फंसे हों तो सबसे ऊपरी मंजिल पर जाएं।",
+      "खिड़की से चमकीले कपड़े या टॉर्च से बचावकर्ताओं को संकेत दें।"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Wildfire Evacuation",
+    "title_hi": "जंगल की आग से बचाव",
+    "icon": "local_fire_department",
+    "summary": "How to safely evacuate during a wildfire and protect yourself from smoke.",
+    "summary_hi": "जंगल की आग के दौरान सुरक्षित रूप से कैसे निकलें और धुएं से खुद को कैसे बचाएं।",
+    "steps": [
+      "Leave immediately when ordered to evacuate — do not delay.",
+      "Close all windows and doors to slow fire entry.",
+      "Wear N95 mask or cover nose/mouth with damp cloth.",
+      "Drive with headlights on and windows closed.",
+      "Do not park or shelter under trees or powerlines."
+    ],
+    "steps_hi": [
+      "निकासी का आदेश मिलते ही तुरंत निकलें।",
+      "आग को धीमा करने के लिए सभी खिड़कियां और दरवाजे बंद करें।",
+      "N95 मास्क पहनें या नम कपड़े से नाक और मुंह ढकें।",
+      "हेडलाइट जलाकर और खिड़कियां बंद कर गाड़ी चलाएं।",
+      "पेड़ों या बिजली लाइनों के नीचे पार्क न करें।"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Choking & Heimlich Maneuver",
+    "title_hi": "गला रुकना और हेम्लिच प्रक्रिया",
+    "icon": "sick",
+    "summary": "How to help a choking adult, child, or infant using back blows and abdominal thrusts.",
+    "summary_hi": "वयस्क, बच्चे या शिशु का गला रुकने पर कैसे मदद करें।",
+    "steps": [
+      "Ask 'Are you choking?' — if they cannot speak, act immediately.",
+      "Give 5 firm back blows between the shoulder blades.",
+      "Give 5 abdominal thrusts (Heimlich): stand behind, arms around waist, thrust inward and upward.",
+      "Alternate back blows and abdominal thrusts until the object is dislodged.",
+      "If they become unconscious, begin CPR."
+    ],
+    "steps_hi": [
+      "पूछें 'क्या आपका गला रुक गया है?' — अगर वे बोल नहीं सकते, तुरंत काम करें।",
+      "कंधे के ब्लेड के बीच 5 बार जोर से मारें।",
+      "पेट पर 5 बार जोर लगाएं: पीछे से खड़े हों, हाथ कमर के चारों ओर, अंदर और ऊपर की तरफ धक्का दें।",
+      "जब तक वस्तु न निकले तब तक बारी-बारी से पीठ पर मारें और पेट पर जोर लगाएं।",
+      "अगर वे बेहोश हो जाएं तो CPR शुरू करें।"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Burns Treatment",
+    "title_hi": "जलने का उपचार",
+    "icon": "thermostat",
+    "summary": "Immediate first aid for minor and major burns including chemical and electrical burns.",
+    "summary_hi": "मामूली और गंभीर जलने के लिए प्राथमिक चिकित्सा।",
+    "steps": [
+      "Cool the burn with cool (not cold) running water for 10–20 minutes.",
+      "Do NOT use ice, butter, or toothpaste.",
+      "Cover loosely with a clean, non-fluffy bandage.",
+      "Do not pop blisters.",
+      "For large or deep burns, cover and seek medical help immediately."
+    ],
+    "steps_hi": [
+      "जले हुए स्थान को 10–20 मिनट तक ठंडे (बर्फ नहीं) पानी से ठंडा करें।",
+      "बर्फ, मक्खन या टूथपेस्ट न लगाएं।",
+      "साफ, रोएं रहित पट्टी से ढीले ढंग से ढकें।",
+      "फफोलों को न फोड़ें।",
+      "बड़े या गहरे जलने के लिए ढककर तुरंत चिकित्सा सहायता लें।"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Fracture & Splinting",
+    "title_hi": "हड्डी टूटना और स्प्लिंट",
+    "icon": "accessibility",
+    "summary": "How to immobilize suspected fractures using improvised splints until medical help arrives.",
+    "summary_hi": "चिकित्सा सहायता आने तक संदिग्ध फ्रैक्चर को अचल रखने का तरीका।",
+    "steps": [
+      "Do not try to straighten the bone.",
+      "Immobilize the limb in the position found.",
+      "Use rigid material (board, rolled newspaper) as a splint.",
+      "Pad the splint for comfort and secure with cloth ties above and below the fracture.",
+      "Check circulation beyond the splint (pulse, color, warmth)."
+    ],
+    "steps_hi": [
+      "हड्डी को सीधा करने की कोशिश न करें।",
+      "अंग को जिस स्थिति में पाएं उसी में स्थिर रखें।",
+      "कठोर सामग्री (बोर्ड, मुड़ा अखबार) को स्प्लिंट के रूप में उपयोग करें।",
+      "आराम के लिए स्प्लिंट को गद्देदार बनाएं और फ्रैक्चर के ऊपर-नीचे कपड़े से बांधें।",
+      "स्प्लिंट के आगे रक्त संचार जांचें (नाड़ी, रंग, गर्मी)।"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Hypothermia & Cold Exposure",
+    "title_hi": "हाइपोथर्मिया और ठंड से बचाव",
+    "icon": "ac_unit",
+    "summary": "Recognizing and treating dangerously low body temperature in disaster and cold weather scenarios.",
+    "summary_hi": "आपदा और ठंड में शरीर का तापमान खतरनाक रूप से कम होने पर पहचानना और उपचार करना।",
+    "steps": [
+      "Move the person to a warm, dry area immediately.",
+      "Remove wet clothing gently.",
+      "Warm the body core first (chest, neck, groin) with blankets or body heat.",
+      "Do NOT rub limbs vigorously — it can trigger cardiac arrest.",
+      "Give warm (not hot) beverages if conscious."
+    ],
+    "steps_hi": [
+      "व्यक्ति को तुरंत गर्म, सूखी जगह पर ले जाएं।",
+      "गीले कपड़े धीरे से हटाएं।",
+      "शरीर के मुख्य भाग (छाती, गर्दन, जांघ) को कंबल या शरीर की गर्मी से पहले गर्म करें।",
+      "हाथ-पैरों को जोर से न रगड़ें — इससे कार्डियक अरेस्ट हो सकता है।",
+      "होश में हों तो गर्म (गर्म नहीं) पेय दें।"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Dehydration & Water Safety",
+    "title_hi": "निर्जलीकरण और पानी की सुरक्षा",
+    "icon": "water",
+    "summary": "Managing dehydration during disasters and making contaminated water safe to drink.",
+    "summary_hi": "आपदाओं के दौरान निर्जलीकरण का प्रबंधन और दूषित पानी को पीने लायक बनाना।",
+    "steps": [
+      "Signs of dehydration: dark urine, dizziness, dry mouth, confusion.",
+      "Drink small sips frequently — not large amounts at once.",
+      "To purify water: boil for at least 1 minute (3 minutes at high altitude).",
+      "If no fuel, use 2 drops of household bleach per litre and wait 30 minutes.",
+      "Avoid alcohol and caffeine — they increase dehydration."
+    ],
+    "steps_hi": [
+      "निर्जलीकरण के संकेत: गहरा पेशाब, चक्कर, सूखा मुंह, भ्रम।",
+      "बार-बार छोटे-छोटे घूंट पिएं — एक साथ बहुत ज्यादा नहीं।",
+      "पानी शुद्ध करने के लिए: कम से कम 1 मिनट उबालें (ऊंचाई पर 3 मिनट)।",
+      "अगर ईंधन नहीं है, तो प्रति लीटर 2 बूंद ब्लीच डालें और 30 मिनट प्रतीक्षा करें।",
+      "शराब और कैफीन से बचें — ये निर्जलीकरण बढ़ाते हैं।"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Wound Cleaning & Infection",
+    "title_hi": "घाव की सफाई और संक्रमण",
+    "icon": "healing",
+    "summary": "Properly cleaning wounds to prevent infection when medical care is unavailable.",
+    "summary_hi": "जब चिकित्सा देखभाल उपलब्ध न हो तो संक्रमण रोकने के लिए घावों की उचित सफाई।",
+    "steps": [
+      "Wash hands thoroughly before touching the wound.",
+      "Rinse the wound with clean water for several minutes.",
+      "Gently remove visible dirt with clean tweezers.",
+      "Do NOT use hydrogen peroxide or iodine directly — they damage tissue.",
+      "Cover with a clean bandage and change daily."
+    ],
+    "steps_hi": [
+      "घाव छूने से पहले हाथों को अच्छी तरह धोएं।",
+      "घाव को कई मिनट तक साफ पानी से धोएं।",
+      "साफ चिमटी से दिखने वाली गंदगी धीरे से हटाएं।",
+      "सीधे हाइड्रोजन पेरोक्साइड या आयोडीन न डालें — ये ऊतक को नुकसान पहुंचाते हैं।",
+      "साफ पट्टी से ढकें और रोजाना बदलें।"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Shock Management",
+    "title_hi": "शॉक का प्रबंधन",
+    "icon": "bolt",
+    "summary": "Recognizing and managing medical shock — a life-threatening condition following trauma or blood loss.",
+    "summary_hi": "चिकित्सीय शॉक को पहचानना और प्रबंधित करना — आघात या रक्त हानि के बाद जानलेवा स्थिति।",
+    "steps": [
+      "Signs: pale/cold skin, rapid weak pulse, confusion, rapid breathing.",
+      "Lay the person flat and elevate legs 12 inches (unless spinal injury suspected).",
+      "Keep warm with a blanket.",
+      "Do not give food or water.",
+      "Monitor breathing continuously and be ready to perform CPR."
+    ],
+    "steps_hi": [
+      "संकेत: पीली/ठंडी त्वचा, तेज कमजोर नाड़ी, भ्रम, तेज सांस।",
+      "व्यक्ति को लिटाएं और पैर 12 इंच ऊपर करें (रीढ़ की चोट का संदेह न हो तो)।",
+      "कंबल से गर्म रखें।",
+      "खाना या पानी न दें।",
+      "लगातार सांस की निगरानी करें और CPR के लिए तैयार रहें।"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Mental Health in Disasters",
+    "title_hi": "आपदाओं में मानसिक स्वास्थ्य",
+    "icon": "psychology",
+    "summary": "Managing trauma, panic attacks, and psychological first aid for survivors.",
+    "summary_hi": "बचे लोगों के लिए आघात, पैनिक अटैक और मनोवैज्ञानिक प्राथमिक चिकित्सा का प्रबंधन।",
+    "steps": [
+      "Acknowledge feelings — it is normal to feel scared, angry, or numb.",
+      "For panic attacks: breathe in for 4 counts, hold 4, out for 4.",
+      "Keep routines where possible — eating, sleeping at regular times.",
+      "Stay connected with others — isolation worsens trauma.",
+      "Avoid excessive disaster news consumption."
+    ],
+    "steps_hi": [
+      "भावनाओं को स्वीकार करें — डरा हुआ, गुस्से में या सुन्न महसूस करना सामान्य है।",
+      "पैनिक अटैक के लिए: 4 गिनती में सांस लें, 4 रोकें, 4 में छोड़ें।",
+      "जहां संभव हो नियमितता बनाए रखें — नियमित समय पर खाएं, सोएं।",
+      "दूसरों से जुड़े रहें — अकेलापन आघात को बढ़ाता है।",
+      "अत्यधिक आपदा समाचार देखने से बचें।"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Child & Infant Emergency Care",
+    "title_hi": "बच्चे और शिशु आपातकालीन देखभाल",
+    "icon": "child_care",
+    "summary": "Pediatric first aid differences: CPR ratios, choking techniques, and signs of distress in children.",
+    "summary_hi": "बच्चों के लिए प्राथमिक चिकित्सा: CPR अनुपात, घुटन की तकनीक और बच्चों में संकट के संकेत।",
+    "steps": [
+      "Child CPR (1–8 yrs): use 2 fingers or 1 hand; compress 1.5–2 inches; 30:2 ratio.",
+      "Infant CPR (<1 yr): use 2 fingers on breastbone; gentle puffs only for breaths.",
+      "Infant choking: face-down on forearm, give 5 back blows between shoulder blades.",
+      "Signs of serious child illness: limp body, high fever with stiff neck, unresponsive.",
+      "Keep children calm and with a trusted adult to reduce shock."
+    ],
+    "steps_hi": [
+      "बच्चे CPR (1–8 वर्ष): 2 उंगलियां या 1 हाथ; 1.5–2 इंच दबाएं; 30:2 अनुपात।",
+      "शिशु CPR (<1 वर्ष): स्तन की हड्डी पर 2 उंगलियां; सांस के लिए केवल हल्के फूंक।",
+      "शिशु का गला रुकना: अग्र-भाग पर मुंह नीचे करके रखें, कंधे के ब्लेड के बीच 5 बार थपथपाएं।",
+      "गंभीर बीमारी के संकेत: लिंप शरीर, कड़े गर्दन के साथ तेज बुखार, बेहोशी।",
+      "बच्चों को शांत रखें और किसी विश्वसनीय वयस्क के साथ रखें।"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "SOS Signaling & Rescue",
+    "title_hi": "SOS सिग्नल और बचाव",
+    "icon": "sos",
+    "summary": "How to signal for rescue using light, sound, ground markers, and radio communication.",
+    "summary_hi": "प्रकाश, ध्वनि, जमीन पर निशान और रेडियो संचार का उपयोग करके बचाव के लिए कैसे संकेत दें।",
+    "steps": [
+      "International distress signal: 3 short, 3 long, 3 short (SOS in Morse code).",
+      "Use a mirror or shiny object to flash sunlight at aircraft.",
+      "Whistle blasts: 3 blasts, pause, repeat.",
+      "Ground signals: make large arrows (10+ feet) pointing toward your location.",
+      "If you have a phone with GPS, read your exact coordinates to rescuers over radio or SMS."
+    ],
+    "steps_hi": [
+      "अंतर्राष्ट्रीय संकट संकेत: 3 छोटे, 3 लंबे, 3 छोटे (मोर्स कोड में SOS)।",
+      "विमान की ओर दर्पण या चमकदार वस्तु से सूर्य की रोशनी चमकाएं।",
+      "सीटी: 3 बार बजाएं, रुकें, दोहराएं।",
+      "जमीन पर संकेत: अपनी स्थिति की ओर इशारा करते बड़े तीर बनाएं (10+ फीट)।",
+      "अगर GPS वाला फोन है, तो रेडियो या SMS पर बचावकर्ताओं को अपने सटीक निर्देशांक बताएं।"
+    ]
+  }
+]
