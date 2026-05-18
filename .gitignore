@@ -18,6 +18,7 @@ migrate_working_dir/
 
 # The .vscode folder contains configure files for the VS Code editor.
 .vscode/
+*.apk
 
 # Flutter/Dart/Pub related
 **/doc/api/
