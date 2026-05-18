@@ -362,10 +362,6 @@ pubspec_parse
 3.2
 file:///home/sidd/.pub-cache/hosted/pub.dev/pubspec_parse-1.4.0/
 file:///home/sidd/.pub-cache/hosted/pub.dev/pubspec_parse-1.4.0/lib/
-quiver
-2.17
-file:///home/sidd/.pub-cache/hosted/pub.dev/quiver-3.2.2/
-file:///home/sidd/.pub-cache/hosted/pub.dev/quiver-3.2.2/lib/
 shared_preferences
 3.5
 file:///home/sidd/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
@@ -466,10 +462,6 @@ test_api
 3.2
 file:///home/sidd/.pub-cache/hosted/pub.dev/test_api-0.7.2/
 file:///home/sidd/.pub-cache/hosted/pub.dev/test_api-0.7.2/lib/
-tflite_flutter
-3.3
-file:///home/sidd/.pub-cache/hosted/pub.dev/tflite_flutter-0.12.1/
-file:///home/sidd/.pub-cache/hosted/pub.dev/tflite_flutter-0.12.1/lib/
 timing
 3.4
 file:///home/sidd/.pub-cache/hosted/pub.dev/timing-1.0.2/

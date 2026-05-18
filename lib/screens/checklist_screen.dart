@@ -85,12 +85,18 @@ class _ChecklistScreenState extends State<ChecklistScreen> {
         actions: [
           const OfflineBadge(),
           const SizedBox(width: 4),
-          if (state.checklistItems.isNotEmpty)
+          if (state.checklistItems.isNotEmpty) ...[
+            IconButton(
+              icon: const Icon(Icons.delete_outline_rounded),
+              tooltip: 'Reset Checklist',
+              onPressed: () => state.clearChecklist(),
+            ),
             IconButton(
               icon: const Icon(Icons.volume_up_rounded),
               tooltip: state.t('speak'),
               onPressed: () => _readAllAloud(state),
             ),
+          ],
           const SizedBox(width: 4),
         ],
       ),

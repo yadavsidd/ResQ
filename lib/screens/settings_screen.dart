@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
 import '../services/app_state.dart';
+import '../services/gemma_service.dart';
 import 'onboarding_screen.dart'; 
 
 class SettingsScreen extends StatelessWidget {
@@ -140,8 +141,17 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.smart_toy_rounded, color: state.gemma.isReady ? Colors.green : Colors.orange),
-                  title: Text(state.gemma.isReady ? 'Gemma 4 Loaded ✓' : 'Gemma 4 Missing'),
+                  leading: Icon(
+                    Icons.smart_toy_rounded,
+                    color: state.gemma.mode == AiMode.gemmaOnDevice
+                        ? (state.gemma.isEnabled ? Colors.green : Colors.blue)
+                        : Colors.orange,
+                  ),
+                  title: Text(
+                    state.gemma.mode == AiMode.gemmaOnDevice
+                        ? (state.gemma.isEnabled ? 'Gemma 4 Active ✓' : 'Gemma 4 Paused')
+                        : 'Gemma 4 Missing',
+                  ),
                   subtitle: const Text('1.3 GB On-Device Model'),
                   trailing: OutlinedButton(
                     onPressed: () {
@@ -149,6 +159,18 @@ class SettingsScreen extends StatelessWidget {
                     },
                     child: const Text('Download'),
                   ),
+                ),
+                const Divider(height: 1),
+                SwitchListTile(
+                  secondary: const Icon(Icons.bolt_rounded),
+                  title: const Text('Use On-Device Gemma'),
+                  subtitle: const Text('Generate responses via offline AI. Disable to use cached Q&A database.'),
+                  value: state.gemma.isEnabled,
+                  onChanged: state.gemma.mode == AiMode.gemmaOnDevice
+                      ? (bool val) {
+                          state.toggleGemma(val);
+                        }
+                      : null,
                 ),
                 const Divider(height: 1),
                 ListTile(

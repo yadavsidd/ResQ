@@ -54,7 +54,7 @@ class QaPair {
 // ── Service ───────────────────────────────────────────────────────────────────
 
 class OfflineDbService {
-  static const _seededKey = 'resq_qa_seeded_v1';
+  static const _seededKey = 'resq_qa_seeded_v4';
 
   /// Call this after DatabaseService has created / migrated the DB.
   Future<void> init(Database db) async {
@@ -71,9 +71,10 @@ class OfflineDbService {
   // ── Seeding ────────────────────────────────────────────────────────────────
 
   Future<void> _seed() async {
+    await _db.delete('qa_pairs');
     final batch = _db.batch();
     for (final row in _seedData) {
-      batch.insert('qa_pairs', row, conflictAlgorithm: ConflictAlgorithm.ignore);
+      batch.insert('qa_pairs', row);
     }
     await batch.commit(noResult: true);
   }
@@ -101,12 +102,18 @@ class OfflineDbService {
 
     for (final row in rows) {
       final pair = QaPair.fromMap(row);
-      final haystack =
-          '${pair.keywords} ${pair.answerEn} ${pair.answerHi}'.toLowerCase();
+      final haystackTokens = '${pair.keywords} ${pair.answerEn} ${pair.answerHi}'
+          .toLowerCase()
+          .split(RegExp(r'[\s,\.!?\-]+'))
+          .toSet();
 
       int score = 0;
       for (final token in tokens) {
-        if (haystack.contains(token)) score++;
+        if (haystackTokens.contains(token)) {
+          score += 2; // Exact word match
+        } else if (haystackTokens.any((h) => h.startsWith(token))) {
+          score += 1; // Prefix match (e.g. 'stop' matches 'stopped')
+        }
       }
 
       if (score > bestScore) {
@@ -298,7 +305,7 @@ class OfflineDbService {
 
     // ── 6. Dehydration ────────────────────────────────────────────────────────
     {
-      'keywords': 'dehydration thirst water purify drink diarrhea vomiting',
+      'keywords': 'dehydration thirst find water purify drink diarrhea vomiting',
       'topic':    'Dehydration',
       'answer_en':
           '1. Signs: dark urine, dizziness, dry mouth, confusion, sunken eyes.\n'
@@ -656,6 +663,111 @@ class OfflineDbService {
           '3. जितना हो सके दिनचर्या बनाए रखें।\n'
           '4. ड्राइंग या बातचीत से भावनाएं व्यक्त करने दें।\n'
           '5. आपदा की तस्वीरें और खबरें बच्चों से दूर रखें।',
+    },
+    // ── 16. Snakebite ────────────────────────────────────────────────────────
+    {
+      'keywords': 'snake snakebite bite venom poisonous cobra viper',
+      'topic':    'Snakebite',
+      'answer_en':
+          '1. Keep the victim calm and absolutely still to slow venom spread.\n'
+          '2. Keep the bitten area below the level of the heart.\n'
+          '3. Remove tight clothing, rings, or watches near the bite.\n'
+          '4. Do NOT cut the wound, attempt to suck out venom, or apply ice.\n'
+          '5. Seek immediate emergency medical care for antivenom.',
+      'answer_hi':
+          '1. पीड़ित को शांत और बिल्कुल स्थिर रखें।\n'
+          '2. काटे गए अंग को दिल के स्तर से नीचे रखें।\n'
+          '3. घाव के पास से अंगूठियां या तंग कपड़े हटा दें।\n'
+          '4. घाव को न काटें, जहर न चूसें और बर्फ न लगाएं।\n'
+          '5. एंटीवेनम के लिए तुरंत अस्पताल जाएं।',
+    },
+    {
+      'keywords': 'snakebite tourniquet tie wrap bandage venom restrict',
+      'topic':    'Snakebite',
+      'answer_en':
+          '1. Do NOT apply a tight tourniquet (can cause limb loss).\n'
+          '2. You may apply a broad pressure bandage over the bite.\n'
+          '3. Wrap it firmly like a sprained ankle, but not so tight it stops blood flow.\n'
+          '4. Immobilize the limb using a splint.\n'
+          '5. Carry the victim if possible; do not let them walk.',
+      'answer_hi':
+          '1. तंग टर्निकेट (रस्सी) न बांधें (अंग काटना पड़ सकता है)।\n'
+          '2. आप घाव पर चौड़ी दबाव वाली पट्टी बांध सकते हैं।\n'
+          '3. इसे मोच की तरह मजबूती से बांधें, लेकिन खून न रुके।\n'
+          '4. स्प्लिंट का उपयोग कर अंग को स्थिर करें।\n'
+          '5. हो सके तो पीड़ित को उठाकर ले जाएं; चलने न दें।',
+    },
+
+    // ── 17. Heart Attack ─────────────────────────────────────────────────────
+    {
+      'keywords': 'heart attack chest pain pressure squeeze left arm jaw',
+      'topic':    'Heart Attack',
+      'answer_en':
+          '1. Have the person sit down, rest, and try to keep calm.\n'
+          '2. Loosen any tight clothing around the neck and chest.\n'
+          '3. Ask if they take chest pain medication (like nitroglycerin) and help them take it.\n'
+          '4. If conscious and not allergic, give them one adult aspirin to chew.\n'
+          '5. Call emergency services immediately. If unconscious, begin CPR.',
+      'answer_hi':
+          '1. व्यक्ति को बैठाएं, आराम कराएं और शांत रखें।\n'
+          '2. गर्दन और छाती के आसपास के तंग कपड़े ढीले करें।\n'
+          '3. अगर उनके पास सीने के दर्द की दवा हो तो लेने में मदद करें।\n'
+          '4. अगर होश में हैं और एलर्जी नहीं है, तो एक एस्पिरिन चबाने को दें।\n'
+          '5. तुरंत एंबुलेंस बुलाएं। बेहोश होने पर CPR शुरू करें।',
+    },
+
+    // ── 18. Poisoning ────────────────────────────────────────────────────────
+    {
+      'keywords': 'poison swallowed drank toxic chemical bleach cleaner acid',
+      'topic':    'Poisoning',
+      'answer_en':
+          '1. Find out exactly what was swallowed, how much, and when.\n'
+          '2. Do NOT induce vomiting unless instructed by a medical professional.\n'
+          '3. Do NOT give water or milk to drink unless advised (can worsen chemical burns).\n'
+          '4. Wipe any remaining poison from the mouth with a cloth.\n'
+          '5. Keep the container and bring it to the hospital.',
+      'answer_hi':
+          '1. पता लगाएं कि क्या, कितना और कब निगला गया है।\n'
+          '2. डॉक्टर के कहे बिना उल्टी कराने की कोशिश न करें।\n'
+          '3. सलाह के बिना पानी या दूध न दें (जहर फैल सकता है)।\n'
+          '4. मुंह में बचे हुए जहर को कपड़े से पोंछ लें।\n'
+          '5. जहर का डिब्बा संभाल कर रखें और अस्पताल ले जाएं।',
+    },
+
+    // ── 19. Power Outage ─────────────────────────────────────────────────────
+    {
+      'keywords': 'power outage blackout electricity cut grid failure dark',
+      'topic':    'Power Outage',
+      'answer_en':
+          '1. Use flashlights instead of candles to prevent fire hazards.\n'
+          '2. Keep refrigerators and freezers closed (food stays cold for hours).\n'
+          '3. Unplug major appliances to protect them from power surges when power returns.\n'
+          '4. Do not use gas stoves, grills, or generators indoors due to carbon monoxide risk.\n'
+          '5. Listen to a battery-powered radio for local updates.',
+      'answer_hi':
+          '1. आग से बचने के लिए मोमबत्ती के बजाय टॉर्च का उपयोग करें।\n'
+          '2. फ्रिज के दरवाजे बंद रखें (खाना घंटों तक ठंडा रहेगा)।\n'
+          '3. बिजली आने पर झटके से बचाने के लिए बड़े उपकरण अनप्लग करें।\n'
+          '4. गैस स्टोव या जनरेटर का घर के अंदर उपयोग न करें (जहरीली गैस का खतरा)।\n'
+          '5. स्थानीय समाचार के लिए बैटरी वाला रेडियो सुनें।',
+    },
+
+    // ── 20. Dog / Animal Bite ────────────────────────────────────────────────
+    {
+      'keywords': 'dog bite animal stray rabies scratch teeth wound infection',
+      'topic':    'Animal Bite',
+      'answer_en':
+          '1. Wash the wound immediately with plenty of soap and running water for 15 minutes.\n'
+          '2. Apply an antiseptic or iodine lotion if available.\n'
+          '3. Cover with a clean, sterile bandage.\n'
+          '4. Seek medical attention immediately for rabies and tetanus vaccinations.\n'
+          '5. Try to note the animal\'s appearance and location for health authorities.',
+      'answer_hi':
+          '1. घाव को तुरंत बहुत सारे साबुन और बहते पानी से 15 मिनट तक धोएं।\n'
+          '2. अगर हो तो एंटीसेप्टिक या आयोडीन लोशन लगाएं।\n'
+          '3. साफ, कीटाणुरहित पट्टी से ढक दें।\n'
+          '4. रेबीज और टिटनेस के टीके के लिए तुरंत डॉक्टर के पास जाएं।\n'
+          '5. जानवर की पहचान और स्थान याद रखें।',
     },
   ];
 }

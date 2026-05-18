@@ -16,10 +16,79 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   double _progress = 0;
-  String _status = 'Ready to download...';
+  String _status = 'Checking local storage for model...';
   bool _isDownloading = false;
   bool _isFinished = false;
   final _cancelToken = CancelToken();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkExistingModel();
+  }
+
+  Future<void> _checkExistingModel() async {
+    try {
+      // 1. Try secure internal storage
+      final internalDir = await getApplicationDocumentsDirectory();
+      final internalPath = '${internalDir.path}/gemma-4-e2b.tflite';
+      final internalFile = File(internalPath);
+      if (await internalFile.exists() && await internalFile.length() > 1000000000) {
+        _markModelFound();
+        return;
+      }
+
+      // 2. Try app-specific external storage documents directory
+      final externalDirs = await getExternalStorageDirectories(type: StorageDirectory.documents);
+      if (externalDirs != null) {
+        for (final dir in externalDirs) {
+          final path = '${dir.path}/gemma-4-e2b.tflite';
+          final file = File(path);
+          if (await file.exists() && await file.length() > 1000000000) {
+            _markModelFound();
+            return;
+          }
+        }
+      }
+
+      // 3. Try app-specific external files directory
+      final externalDir = await getExternalStorageDirectory();
+      if (externalDir != null) {
+        final path = '${externalDir.path}/gemma-4-e2b.tflite';
+        final file = File(path);
+        if (await file.exists() && await file.length() > 1000000000) {
+          _markModelFound();
+          return;
+        }
+      }
+
+      // Clean up corrupt files in internal storage if they are less than 1GB
+      if (await internalFile.exists()) {
+        await internalFile.delete();
+      }
+
+      setState(() {
+        _status = 'Ready to download...';
+      });
+    } catch (e) {
+      setState(() {
+        _status = 'Ready to download...';
+      });
+    }
+  }
+
+  void _markModelFound() {
+    setState(() {
+      _isFinished = true;
+      _progress = 1.0;
+      _status = 'Model detected on storage! Native AI engine is ready.';
+    });
+    // Quietly load the native engine
+    if (mounted) {
+      final state = context.read<AppState>();
+      state.gemma.init(state.offlineDb);
+    }
+  }
 
   Future<void> _startDownload() async {
     setState(() {
@@ -30,27 +99,58 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     try {
       final docs = await getApplicationDocumentsDirectory();
       final path = '${docs.path}/gemma-4-e2b.tflite';
+      final file = File(path);
       
-      // To make this work, you MUST host the gemma-4-e2b.tflite file on your own server/bucket
-      // (like AWS S3, Firebase Storage, or a direct Google Drive link) and paste the URL below.
-      // Gemma requires a license agreement, so there is no public static URL available.
-      final url = 'YOUR_DIRECT_DOWNLOAD_URL_HERE'; // <-- Replace this!
+      // Clean up any stale files first
+      if (await file.exists()) {
+        await file.delete();
+      }
 
-      await Dio().download(
+      final url = 'https://github.com/yadavsidd/ResQ/releases/download/v1.0.0-model/gemma-4-e2b.tflite';
+
+      // Explicitly configure Dio options to follow redirects and set standard headers
+      final dio = Dio();
+      dio.options.followRedirects = true;
+      dio.options.maxRedirects = 5;
+      dio.options.headers = {
+        'Accept': 'application/octet-stream',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36',
+      };
+
+      await dio.download(
         url,
         path,
         cancelToken: _cancelToken,
         onReceiveProgress: (count, total) {
-          if (total != -1) {
+          if (total != -1 && total > 0) {
             setState(() {
               _progress = count / total;
               final mbCount = (count / 1024 / 1024).toStringAsFixed(1);
               final mbTotal = (total / 1024 / 1024).toStringAsFixed(1);
               _status = 'Downloading: $mbCount / $mbTotal MB';
             });
+          } else {
+            // Handle chunked transfer encoding (total is -1 or unknown)
+            setState(() {
+              final mbCount = (count / 1024 / 1024).toStringAsFixed(1);
+              _status = 'Downloading: $mbCount MB (calculating remaining...)';
+              _progress = 0.5; // dummy progress to keep indicator active
+            });
           }
         },
       );
+
+      // Verify the downloaded file size
+      if (!await file.exists()) {
+        throw Exception('Download finished but the output file does not exist on disk.');
+      }
+
+      final size = await file.length();
+      if (size < 1000000000) {
+        // Delete the corrupt/incomplete file
+        await file.delete();
+        throw Exception('File download completed, but the file size is too small ($size bytes). The download may have been interrupted or blocked. Please check your internet connection and try again.');
+      }
       
       setState(() {
         _status = 'Verifying SHA-256 integrity...';

@@ -173,6 +173,11 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void toggleGemma(bool val) {
+    gemma.isEnabled = val;
+    notifyListeners();
+  }
+
   // ── Demo / Judge Mode ──────────────────────────────────────────────────────
 
   void triggerDemoScenario() {
@@ -311,7 +316,7 @@ class AppState extends ChangeNotifier {
 
     String responseText;
 
-    if (gemma.isReady) {
+    if (gemma.isInterpreterRunning) {
       final needs = specialNeeds.isEmpty ? 'none' : specialNeeds.join(', ');
       final prompt = 'Generate a prioritized survival checklist for $groupSize people facing a $disaster. Special needs: $needs. Format as numbered list. Include: immediate safety actions, items to grab, medical priorities, communication steps. Max 20 items. Be specific.';
       responseText = await gemma.generateText(prompt: prompt);
@@ -392,6 +397,12 @@ class AppState extends ChangeNotifier {
     final updated = item.copyWith(isChecked: !item.isChecked);
     checklistItems[index] = updated;
     await db.updateChecklistItem(updated);
+    notifyListeners();
+  }
+
+  Future<void> clearChecklist() async {
+    await db.clearChecklist();
+    checklistItems.clear();
     notifyListeners();
   }
 

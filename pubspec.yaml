@@ -15,12 +15,13 @@ dependencies:
     sdk: flutter
 
   # ── AI / ML ──────────────────────────────────────────────────────────────────
-  # tflite_flutter: official Google LiteRT Dart binding — runs the bundled
-  # gemma-4-e2b.tflite fully on-device via CPU/GPU delegates. No network.
-  tflite_flutter: ^0.12.1
+  # Gemma inference is now handled natively by com.google.mediapipe:tasks-genai
+  # in the Android Kotlin layer (GemmaEngine.kt + MainActivity.kt).
+  # Flutter communicates via MethodChannel "resq/gemma" and EventChannel "resq/gemma_stream".
 
   # google_generative_ai: kept for the Gemma tokenizer helper utilities.
   google_generative_ai: ^0.4.6
+
 
   # ── Offline Maps ──────────────────────────────────────────────────────────────
   # flutter_map: renders OpenStreetMap tiles from a local tile cache.

@@ -41,12 +41,20 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() {});
   }
 
-  void _scrollToBottom() {
+  int _lastLength = 0;
+
+  void _scrollToBottom({bool force = false}) {
+    if (!mounted) return;
+    final state = context.read<AppState>();
+    final currentLength = state.chatHistory.length;
+    if (!force && currentLength == _lastLength) return;
+    _lastLength = currentLength;
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
         );
       }
@@ -55,9 +63,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<void> _send() async {
     final text = _controller.text.trim();
+    if (text.isEmpty) return;
     _controller.clear();
     await context.read<AppState>().sendMessageStreaming(text);
-    _scrollToBottom();
+    _scrollToBottom(force: true);
   }
 
   Future<void> _toggleListening(AppState state) async {
@@ -195,7 +204,7 @@ class _ChatScreenState extends State<ChatScreen> {
               onPressed: () {
                 if (!state.isGenerating) {
                   context.read<AppState>().sendMessageStreaming(text);
-                  _scrollToBottom();
+                  _scrollToBottom(force: true);
                 }
               },
               child: Text(text,
