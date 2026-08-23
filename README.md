@@ -75,3 +75,7 @@ If you wish to test ResQ but don't want to wait for the 1.3 GB download on the s
 2. The app will boot into **Offline Fallback Mode**. You will see the AI status banner immediately flag itself as **Orange** (`AI Offline — Using Cached Responses`). 
 3. You can now natively test our strict Fallback Checklist Generator, custom SOS emergency Maps engine, and SQLite heuristic Chat engine!
 4. Swipe over to the **First Aid Guide Screen** and note how high-priority protocols jump to the top, and UI emojis assemble dynamically across both English & Hindi formats without breaking Text-to-Speech strings!
+
+##Credits:
+1. Siddhant Yadav
+2. Khushal Agrawal 
